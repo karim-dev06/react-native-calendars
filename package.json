@@ -1,5 +1,5 @@
 {
-  "name": "@karim-dev06/react-native-calendars",
+  "name": "react-native-calendars-karim",
   "version": "1.0.0",
   "main": "src/index.ts",
   "types": "src/index.d.ts",
@@ -28,8 +28,7 @@
     "url": "git+https://github.com/karim-dev06/react-native-calendars"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
+    "registry": "https://registry.npmjs.org/"
   },
   "author": "Karimulla Mohammed (karim-dev06)",
   "license": "MIT",
