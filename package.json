@@ -1,6 +1,6 @@
 {
   "name": "react-native-calendars-karim",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "main": "src/index.ts",
   "types": "src/index.d.ts",
   "description": "React Native Calendar Components - Forked with custom enhancements",

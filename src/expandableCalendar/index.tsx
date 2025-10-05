@@ -583,6 +583,7 @@ const ExpandableCalendar = forwardRef<ExpandableCalendarRef, ExpandableCalendarP
           testID={`${testID}.weekCalendar`}
           firstDay={firstDay}
           {...others}
+          hideExtraDays={false}
           allowShadow={disableWeekScroll ? undefined : false}
           current={disableWeekScroll ? date : undefined}
           theme={themeObject}
@@ -615,7 +616,6 @@ const ExpandableCalendar = forwardRef<ExpandableCalendarRef, ExpandableCalendarP
         hideArrows={shouldHideArrows}
         onPressArrowLeft={_onPressArrowLeft}
         onPressArrowRight={_onPressArrowRight}
-        hideExtraDays={!horizontal && isOpen}
         renderArrow={_renderArrow}
         staticHeader
         numberOfDays={numberOfDays}

@@ -1,12 +1,102 @@
-[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
-
-# React Native Calendars 🗓️ 📆
+# React Native Calendars - Karim's Fork 🗓️ 📆
 
 ## A declarative cross-platform React Native calendar component for iOS and Android.
 
-[![Version](https://img.shields.io/npm/v/react-native-calendars.svg)](https://www.npmjs.com/package/react-native-calendars)
-[![Build status](https://badge.buildkite.com/1a911fa39db2518a615b73f3dc18ec0938a66403f2ad66f79b.svg)](https://buildkite.com/wix-mobile-oss/react-native-calendars)
-<br>
+[![npm version](https://img.shields.io/npm/v/react-native-calendars-karim.svg)](https://www.npmjs.com/package/react-native-calendars-karim)
+[![Original](https://img.shields.io/badge/original-wix%2Freact--native--calendars-blue)](https://github.com/wix/react-native-calendars)
+
+> **Note**: This is a fork of [`wix/react-native-calendars`](https://github.com/wix/react-native-calendars) published as `react-native-calendars-karim` on npm. It includes custom bug fixes and enhancements not yet merged into the upstream repository.
+
+### Why This Fork?
+
+This fork was created to:
+- Fix critical bugs found during integration
+- Add custom enhancements needed for specific use cases
+- Maintain faster iteration cycle for bug fixes while waiting for upstream PRs
+
+### Installation
+
+```bash
+npm install react-native-calendars-karim
+# or
+yarn add react-native-calendars-karim
+```
+
+### Custom Changes
+
+#### Bug Fixes
+
+1. **hideExtraDays behavior fix** (v1.0.2)
+   - **Issue**: The `hideExtraDays` prop on `ExpandableCalendar` worked in reverse - extra days were hidden when collapsed and visible when expanded
+   - **Fix**: Corrected the logic to properly hide extra days when calendar is expanded/open
+   - **File**: `src/expandableCalendar/index.tsx:618`
+
+#### Enhancements
+
+_(Future enhancements will be documented here)_
+
+## Publishing Workflow (For Maintainers)
+
+### Publishing to npm
+
+```bash
+# 1. Build the library
+yarn build:ts
+
+# 2. Bump version
+npm version patch  # or minor/major
+
+# 3. Commit changes
+git add .
+git commit -m "fix: description of changes"
+git push origin dev
+
+# 4. Publish to npm
+npm publish
+```
+
+**Important**: Compiled `.js` and `.d.ts` files are NOT committed to git. They are generated during build and published via `.npmignore` configuration.
+
+### Local Testing with yalc
+
+Use [yalc](https://github.com/wclr/yalc) for local testing before publishing:
+
+```bash
+# Install yalc globally (one-time)
+npm install -g yalc
+
+# In library directory:
+yarn build:ts
+yalc publish
+
+# In your app directory:
+yalc add react-native-calendars-karim
+
+# After making changes:
+yarn build:ts && yalc push  # Automatically updates linked apps
+
+# Remove yalc and go back to npm:
+yalc remove react-native-calendars-karim
+npm install
+```
+
+### Syncing with Upstream
+
+```bash
+# Update master from upstream
+git checkout master
+git fetch upstream
+git merge upstream/master
+git push origin master
+
+# Merge into dev branch
+git checkout dev
+git merge master
+```
+
+---
+
+## Original Documentation
 
 This module includes information on how to use this customizable **React Native** calendar component.
 
@@ -16,7 +106,7 @@ The package is compatible with both **Android** and **iOS**
 
 > ### **Official documentation**
 >
-> This README provides basic examples of how to get started with `react-native-calendars`. For detailed information, refer to the [official documentation site](https://wix.github.io/react-native-calendars/docs/Intro).
+> For detailed information about the original library, refer to the [official documentation site](https://wix.github.io/react-native-calendars/docs/Intro).
 
 ## Features ✨
 
