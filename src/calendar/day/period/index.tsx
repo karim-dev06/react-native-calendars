@@ -113,16 +113,9 @@ const PeriodDay = (props: PeriodDayProps) => {
       containerStyle.push({
         borderRadius: 17,
         overflow: 'hidden',
-        paddingTop: 5
+        paddingTop: 5,
+        backgroundColor: 'transparent' // Remove background from container to avoid double opacity
       });
-      
-      const start = markingStyle.startingDay;
-      const end = markingStyle.endingDay;
-      if (start && !end) {
-        containerStyle.push({backgroundColor: markingStyle.startingDay?.backgroundColor});
-      } else if (end && !start || end && start) {
-        containerStyle.push({backgroundColor: markingStyle.endingDay?.backgroundColor});
-      }
 
       if (markingStyle.containerStyle) {
         containerStyle.push(markingStyle.containerStyle);
@@ -160,10 +153,17 @@ const PeriodDay = (props: PeriodDayProps) => {
     const end = markingStyle.endingDay;
 
     if (start && !end) {
+      // Starting day: show background on center and right
+      leftFillerStyle.backgroundColor = markingStyle.startingDay?.backgroundColor;
       rightFillerStyle.backgroundColor = markingStyle.startingDay?.backgroundColor;
+      fillerStyle = {backgroundColor: markingStyle.startingDay?.backgroundColor};
     } else if (end && !start) {
+      // Ending day: show background on left and center
       leftFillerStyle.backgroundColor = markingStyle.endingDay?.backgroundColor;
+      rightFillerStyle.backgroundColor = markingStyle.endingDay?.backgroundColor;
+      fillerStyle = {backgroundColor: markingStyle.endingDay?.backgroundColor};
     } else if (markingStyle.day) {
+      // Middle day: show background everywhere
       leftFillerStyle.backgroundColor = markingStyle.day?.backgroundColor;
       rightFillerStyle.backgroundColor = markingStyle.day?.backgroundColor;
       fillerStyle = {backgroundColor: markingStyle.day?.backgroundColor};
@@ -182,11 +182,21 @@ const PeriodDay = (props: PeriodDayProps) => {
 
   const renderFillers = () => {
     if (marking) {
+      const start = markingStyle.startingDay;
+      const end = markingStyle.endingDay;
+      const backgroundColor = (fillerStyles.fillerStyle as ViewStyle)?.backgroundColor;
+
+      // Use a single full-width background to avoid hairline gaps
+      const fillerContainerStyle: ViewStyle = {
+        backgroundColor,
+        borderTopLeftRadius: start ? 17 : 0,
+        borderBottomLeftRadius: start ? 17 : 0,
+        borderTopRightRadius: end ? 17 : 0,
+        borderBottomRightRadius: end ? 17 : 0,
+      };
+
       return (
-        <View style={[style.current.fillers, fillerStyles.fillerStyle]}>
-          <View style={[style.current.leftFiller, fillerStyles.leftFillerStyle]}/>
-          <View style={[style.current.rightFiller, fillerStyles.rightFillerStyle]}/>
-        </View>
+        <View style={[style.current.fillers, fillerContainerStyle]} />
       );
     }
   };

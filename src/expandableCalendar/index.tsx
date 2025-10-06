@@ -195,7 +195,7 @@ const ExpandableCalendar = forwardRef<ExpandableCalendarRef, ExpandableCalendarP
     if (!horizontal) {
       return Math.max(constants.screenHeight, constants.screenWidth);
     }
-    return headerHeight + (WEEK_HEIGHT * (numberOfWeeks.current)) + (hideKnob ? 0 : KNOB_CONTAINER_HEIGHT);
+    return headerHeight + (WEEK_HEIGHT * (numberOfWeeks.current)) + (hideKnob ? 0 : KNOB_CONTAINER_HEIGHT) + (others.markingType === 'period' ? 4 : 0);
   }, [headerHeight, horizontal, hideKnob, numberOfWeeks]);
 
   const openHeight = useRef(getOpenHeight());

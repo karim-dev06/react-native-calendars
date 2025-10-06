@@ -3,7 +3,7 @@ import * as defaultStyle from '../style';
 import {Theme} from '../types';
 import constants from '../commons/constants';
 
-export const KNOB_CONTAINER_HEIGHT = 24;
+export const KNOB_CONTAINER_HEIGHT = 16;
 
 export default function styleConstructor(theme: Theme = {}) {
   const appStyle = {...defaultStyle, ...theme};
