@@ -10,6 +10,7 @@ import {extractDayProps} from '../componentUpdater';
 import styleConstructor from './style';
 import {CalendarProps} from '../calendar';
 import Day from '../calendar/day/index';
+import WeekNumber from '../calendar/week-number';
 import {CalendarContextProps} from './Context';
 
 export type WeekProps = CalendarProps & {
@@ -35,6 +36,7 @@ const Week = React.memo((props: WeekProps) => {
     style: propsStyle,
     numberOfDays = 1,
     timelineLeftInset,
+    showWeekNumbers,
     testID
   } = props;
   const style = useRef(styleConstructor(theme));
@@ -80,6 +82,8 @@ const Week = React.memo((props: WeekProps) => {
     );
   };
 
+  const weekNumberMarking = useRef({disabled: true, disableTouchEvent: true});
+
   const renderWeek = () => {
     const dates = numberOfDays > 1 ? getPartialWeekDates(current, numberOfDays) : getWeek(current);
     const week: JSX.Element[] = [];
@@ -88,6 +92,28 @@ const Week = React.memo((props: WeekProps) => {
       const todayIndex = dates?.indexOf(parseDate(new Date())) || -1;
       const sliced = dates.slice(todayIndex, numberOfDays);
       const datesToRender = numberOfDays > 1 && todayIndex > -1 ? sliced : dates;
+
+      // Add week number at the beginning if showWeekNumbers is true
+      if (showWeekNumbers) {
+        const lastDay = dates[dates.length - 1];
+        const d = lastDay instanceof XDate ? lastDay : new XDate(lastDay);
+        const weekNumber = d.getWeek();
+        const year = d.getFullYear();
+
+        week.push(
+          <View style={style.current.dayContainer} key={`week-${weekNumber}`}>
+            <WeekNumber
+              weekNumber={weekNumber}
+              year={year}
+              weekComponent={dayProps.weekComponent}
+              marking={weekNumberMarking.current}
+              theme={theme}
+              testID={`${testID}.weekNumber_${weekNumber}`}
+            />
+          </View>
+        );
+      }
+
       datesToRender.forEach((day: XDate | string, id: number) => {
         const d = day instanceof XDate ? day : new XDate(day);
         week.push(renderDay(d, id));

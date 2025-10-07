@@ -15,7 +15,7 @@ import {useDidUpdate} from '../hooks';
 import styleConstructor from './style';
 import CalendarHeader, {CalendarHeaderProps} from './header';
 import Day, {DayProps} from './day/index';
-import BasicDay from './day/basic';
+import WeekNumber from './week-number';
 
 export interface CalendarProps extends CalendarHeaderProps, DayProps {
   /** Specify theme properties to override specific styles for calendar parts */
@@ -172,18 +172,21 @@ const Calendar = (props: CalendarProps & ContextProp) => {
     }
   }, [onSwipeLeft, onSwipeRight]);
 
-  const renderWeekNumber = (weekNumber: number) => {
+  const renderWeekNumber = (weekNumber: number, year: number) => {
+    const dayProps = extractDayProps(props);
+
     return (
       <View style={style.current.dayContainer} key={`week-container-${weekNumber}`}>
-        <BasicDay
+        <WeekNumber
           key={`week-${weekNumber}`}
+          weekNumber={weekNumber}
+          year={year}
+          weekComponent={dayProps.weekComponent}
           marking={weekNumberMarking.current}
           // state='disabled'
           theme={theme}
           testID={`${testID}.weekNumber_${weekNumber}`}
-        >
-          {weekNumber}
-        </BasicDay>
+        />
       </View>
     );
   };
@@ -220,7 +223,10 @@ const Calendar = (props: CalendarProps & ContextProp) => {
     }, this);
 
     if (props.showWeekNumbers) {
-      week.unshift(renderWeekNumber(days[days.length - 1].getWeek()));
+      const lastDay = days[days.length - 1];
+      const weekNumber = lastDay.getWeek();
+      const year = lastDay.getFullYear();
+      week.unshift(renderWeekNumber(weekNumber, year));
     }
 
     return (

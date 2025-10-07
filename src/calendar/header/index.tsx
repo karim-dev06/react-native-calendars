@@ -263,7 +263,11 @@ const CalendarHeader = forwardRef((props: CalendarHeaderProps, ref) => {
   };
 
   const renderWeekNumbersSpace = () => {
-    return showWeekNumbers && <View style={style.current.dayHeader}/>;
+    return showWeekNumbers && (
+      <Text style={style.current.dayHeader}>
+        {'W'}
+      </Text>
+    );
   };
 
   const renderDayNames = () => {

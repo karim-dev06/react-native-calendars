@@ -24,6 +24,8 @@ function areEqual(prevProps: DayProps, nextProps: DayProps) {
 export interface DayProps extends BasicDayProps {
   /** Provide custom day rendering component */
   dayComponent?: React.ComponentType<DayProps & {date?: DateData}>; // TODO: change 'date' prop type to string by removing it from overriding BasicDay's 'date' prop (breaking change for V2)
+  /** Provide custom week number rendering component */
+  weekComponent?: React.ComponentType<{weekNumber: number; year: number}>;
 }
 
 const Day = React.memo((props: DayProps) => {
