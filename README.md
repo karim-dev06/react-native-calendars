@@ -1,11 +1,11 @@
-# React Native Calendars - Karim's Fork 🗓️ 📆
+# React Native Calendars - 3by4 Fork 🗓️ 📆
 
 ## A declarative cross-platform React Native calendar component for iOS and Android.
 
-[![npm version](https://img.shields.io/npm/v/react-native-calendars-karim.svg)](https://www.npmjs.com/package/react-native-calendars-karim)
+[![npm version](https://img.shields.io/npm/v/@3by4/react-native-calendars.svg)](https://www.npmjs.com/package/@3by4/react-native-calendars)
 [![Original](https://img.shields.io/badge/original-wix%2Freact--native--calendars-blue)](https://github.com/wix/react-native-calendars)
 
-> **Note**: This is a fork of [`wix/react-native-calendars`](https://github.com/wix/react-native-calendars) published as `react-native-calendars-karim` on npm. It includes custom bug fixes and enhancements not yet merged into the upstream repository.
+> **Note**: This is a fork of [`wix/react-native-calendars`](https://github.com/wix/react-native-calendars) published as `@3by4/react-native-calendars` on npm. It includes custom bug fixes and enhancements.
 
 ### Why This Fork?
 
@@ -17,9 +17,9 @@ This fork was created to:
 ### Installation
 
 ```bash
-npm install react-native-calendars-karim
+npm install @3by4/react-native-calendars
 # or
-yarn add react-native-calendars-karim
+yarn add @3by4/react-native-calendars
 ```
 
 ### Custom Changes
@@ -70,13 +70,13 @@ yarn build:ts
 yalc publish
 
 # In your app directory:
-yalc add react-native-calendars-karim
+yalc add @3by4/react-native-calendars
 
 # After making changes:
 yarn build:ts && yalc push  # Automatically updates linked apps
 
 # Remove yalc and go back to npm:
-yalc remove react-native-calendars-karim
+yalc remove @3by4/react-native-calendars
 npm install
 ```
 
@@ -161,7 +161,7 @@ Basic usage examples of the library
 ### Importing the `Calendar` component
 
 ```javascript
-import {Calendar, CalendarList, Agenda} from 'react-native-calendars';
+import {Calendar, CalendarList, Agenda} from '@3by4/react-native-calendars';
 ```
 
 ### Use the `Calendar` component in your app:
@@ -182,7 +182,7 @@ Here are a few code snippets that demonstrate how to use some of the key feature
 
 ```javascript
 import React, {useState} from 'react';
-import {Calendar, LocaleConfig} from 'react-native-calendars';
+import {Calendar, LocaleConfig} from '@3by4/react-native-calendars';
 
 const App = () => {
   const [selected, setSelected] = useState('');
@@ -230,9 +230,9 @@ export default App;
 ### Configuring the locale:
 
 ```javascript
-import {LocaleConfig} from 'react-native-calendars';
+import {LocaleConfig} from '@3by4/react-native-calendars';
 import React, {useState} from 'react';
-import {Calendar, LocaleConfig} from 'react-native-calendars';
+import {Calendar, LocaleConfig} from '@3by4/react-native-calendars';
 
 LocaleConfig.locales['fr'] = {
   monthNames: [

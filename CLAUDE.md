@@ -4,13 +4,13 @@ This file provides guidance to Claude Code when working with this forked react-n
 
 ## Project Overview
 
-This is a fork of `wix/react-native-calendars` published as `react-native-calendars-karim` on npm. It includes custom bug fixes and enhancements not yet merged into the upstream repository.
+This is a fork of `wix/react-native-calendars` published as `@3by4/react-native-calendars` on npm. It includes custom bug fixes and enhancements not yet merged into the upstream repository.
 
 ### Repository Information
 
 - **Original**: https://github.com/wix/react-native-calendars
 - **Fork**: https://github.com/karim-dev06/react-native-calendars
-- **npm Package**: https://www.npmjs.com/package/react-native-calendars-karim
+- **npm Package**: https://www.npmjs.com/package/@3by4/react-native-calendars
 - **Branch Strategy**:
   - `master` - Synced with upstream (wix/react-native-calendars)
   - `dev` - Development branch with custom changes
@@ -107,10 +107,10 @@ yalc publish
 
 ```bash
 # First time: Add the library from yalc
-yalc add react-native-calendars-karim
+yalc add @3by4/react-native-calendars
 
 # This updates package.json to:
-# "react-native-calendars-karim": "file:.yalc/react-native-calendars-karim"
+# "@3by4/react-native-calendars": "file:.yalc/@3by4/react-native-calendars"
 ```
 
 **3. Make changes and update:**
@@ -145,7 +145,7 @@ yalc installations show  # Show all apps using this package
 
 ```bash
 # In your app directory:
-yalc remove react-native-calendars-karim
+yalc remove @3by4/react-native-calendars
 npm install  # Reinstall from npm registry
 ```
 
@@ -201,9 +201,9 @@ _(Add your enhancements here as you make them)_
 ### "Unable to resolve module" errors with yalc
 
 If you get module resolution errors:
-1. Remove yalc: `yalc remove react-native-calendars-karim`
+1. Remove yalc: `yalc remove @3by4/react-native-calendars`
 2. Clear Metro cache: `npx expo start --clear`
-3. Re-add from yalc: `yalc add react-native-calendars-karim`
+3. Re-add from yalc: `yalc add @3by4/react-native-calendars`
 
 ### Changes not reflecting in app
 

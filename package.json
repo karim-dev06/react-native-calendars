@@ -1,6 +1,6 @@
 {
-  "name": "react-native-calendars-karim",
-  "version": "1.0.7",
+  "name": "@3by4/react-native-calendars",
+  "version": "1.0.0",
   "main": "src/index.ts",
   "types": "src/index.d.ts",
   "description": "React Native Calendar Components - Forked with custom enhancements",
@@ -28,6 +28,7 @@
     "url": "git+https://github.com/karim-dev06/react-native-calendars"
   },
   "publishConfig": {
+    "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
   "author": "Karimulla Mohammed (karim-dev06)",
