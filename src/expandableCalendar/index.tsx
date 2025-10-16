@@ -142,7 +142,7 @@ const ExpandableCalendar = forwardRef<ExpandableCalendarRef, ExpandableCalendarP
   } = props;
 
   const [screenReaderEnabled, setScreenReaderEnabled] = useState(false);
-  const [headerHeight, setHeaderHeight] = useState(0);
+  const [headerHeight, setHeaderHeight] = useState(DEFAULT_HEADER_HEIGHT);
   const onHeaderLayout = useCallback(({nativeEvent: {layout: {height}}}: LayoutChangeEvent) => {
       setHeaderHeight(height || DEFAULT_HEADER_HEIGHT);
   }, []);
@@ -272,8 +272,8 @@ const ExpandableCalendar = forwardRef<ExpandableCalendarRef, ExpandableCalendarP
   }, [isOpen, headerHeight]);
 
   const containerStyle = useMemo(() => {
-    return [allowShadow && style.current.containerShadow, propsStyle, headerHeight === 0  && style.current.hidden, {overflow: 'hidden'} as const];
-  }, [allowShadow, propsStyle, headerHeight]);
+    return [allowShadow && style.current.containerShadow, propsStyle, {overflow: 'hidden'} as const];
+  }, [allowShadow, propsStyle]);
 
   const wrapperStyle = useMemo(() => {
     return {height: deltaY};
