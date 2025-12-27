@@ -1,3 +1,7 @@
+// Core Calendar exports
+export {default as Calendar} from './calendar';
+export type {CalendarProps} from './calendar';
+
 // Core ExpandableCalendar exports
 export {default as ExpandableCalendar} from './expandableCalendar';
 export type {ExpandableCalendarProps} from './expandableCalendar';
